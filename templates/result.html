@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result</title>
+    <style>
+        body {
+            background-color: #87CEFA; /* Light Blue color */
+            font-family: 'Lucida Sans', sans-serif;
+            text-align: center;
+            animation: backgroundFade 5s infinite alternate;
+        }
+        .container {
+            margin-top: 100px;
+            animation: slideIn 1.5s ease-out;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in;
+        }
+        .percentage {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4500;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            background-color: #4682B4;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            animation: pulse 2s infinite;
+        }
+        button:hover {
+            background-color: #4169E1;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes backgroundFade {
+            from { background-color: #87CEFA; }
+            to { background-color: #B0E0E6; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Result</h1>
+        <div class="result-box">
+            <p>Percentage of Hate Speech Comments:</p>
+            <p class="percentage">XX%</p>
+        </div>
+        <br>
+        <form action="/" method="get">
+            <button type="submit">Analyze Another</button>
+        </form>
+    </div>
+</body>
+</html>

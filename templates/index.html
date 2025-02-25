@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hate Speech Analysis</title>
+    <style>
+        body {
+            background-color: #87CEFA; /* Light Blue color */
+            font-family: 'Lucida Sans', sans-serif;
+            text-align: center;
+            animation: backgroundFade 5s infinite alternate;
+        }
+        .container {
+            margin-top: 100px;
+            animation: slideIn 1.5s ease-out;
+        }
+        input {
+            padding: 10px;
+            width: 60%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 20px;
+            border: none;
+            background-color: #4682B4;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            animation: pulse 2s infinite;
+        }
+        button:hover {
+            background-color: #4169E1;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes backgroundFade {
+            from { background-color: #87CEFA; }
+            to { background-color: #B0E0E6; }
+        }
+    </style>
+    <script>
+        function analyzeSentiment() {
+            window.location.href = 'result.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Hate Speech Analysis</h1>
+        <p>Enter a YouTube Video URL to Analyze Comments:</p>
+        <input type="text" id="video-url" placeholder="Enter video URL here">
+        <button onclick="analyzeSentiment()">Analyze</button>
+    </div>
+</body>
+</html>
