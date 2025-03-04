@@ -3,76 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analysis Result</title>
+    <title>Prediction Result</title>
     <style>
         body {
-            background-color: #87CEFA; /* Light Blue color */
             font-family: 'Lucida Sans', sans-serif;
+            background-color: #FFE5B4;
             text-align: center;
-            animation: backgroundFade 5s infinite alternate;
+            padding: 50px;
         }
         .container {
-            margin-top: 100px;
-            animation: slideIn 1.5s ease-out;
-        }
-        .result-box {
-            background-color: #f8f9fa;
+            max-width: 500px;
+            margin: auto;
             padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1.5s ease-in;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        .percentage {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff4500;
-        }
+        h2 { color: #D2691E; }
+        p { font-size: 18px; color: #444; }
+        .toxic { color: red; font-weight: bold; }
+        .non-toxic { color: green; font-weight: bold; }
         button {
-            margin-top: 20px;
-            padding: 12px 20px;
-            border: none;
-            background-color: #4682B4;
+            background: #D2691E;
             color: white;
+            border: none;
+            padding: 12px 20px;
             font-size: 18px;
-            border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
-            animation: pulse 2s infinite;
+            border-radius: 8px;
         }
-        button:hover {
-            background-color: #4169E1;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        @keyframes backgroundFade {
-            from { background-color: #87CEFA; }
-            to { background-color: #B0E0E6; }
-        }
+        button:hover { background: #a65312; }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Analysis Result</h1>
-        <div class="result-box">
-            <p>Percentage of Hate Speech Comments:</p>
-            <p class="percentage">XX%</p>
-        </div>
-        <br>
-        <form action="/" method="get">
-            <button type="submit">Analyze Another</button>
-        </form>
+        <h2>Prediction Result</h2>
+        <p>The analyzed comment:</p>
+        <p><strong id="inputText"></strong></p>
+        
+        <p>Result:</p>
+        <p id="resultText" class="non-toxic">Non-Toxic</p>
+
+        <button onclick="goBack()">Try Another</button>
     </div>
+
+    <script>
+        function goBack() { window.history.back(); }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const text = urlParams.get("text");
+            const prediction = urlParams.get("prediction");
+
+            document.getElementById("inputText").innerText = text;
+            
+            if (prediction === "Toxic") {
+                document.getElementById("resultText").innerText = "Toxic";
+                document.getElementById("resultText").className = "toxic";
+            } else {
+                document.getElementById("resultText").innerText = "Non-Toxic";
+                document.getElementById("resultText").className = "non-toxic";
+            }
+        });
+    </script>
+
 </body>
 </html>
+
